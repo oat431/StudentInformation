@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "efccf1b2eac6abaf3925251f74d0e711",
+    "content-hash": "fac753ae2702317b354e7eb283f28cbc",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -366,16 +366,16 @@
         },
         {
             "name": "egulias/email-validator",
-            "version": "2.1.22",
+            "version": "2.1.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/egulias/EmailValidator.git",
-                "reference": "68e418ec08fbfc6f58f6fd2eea70ca8efc8cc7d5"
+                "reference": "5fa792ad1853ae2bc60528dd3e5cbf4542d3c1df"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/68e418ec08fbfc6f58f6fd2eea70ca8efc8cc7d5",
-                "reference": "68e418ec08fbfc6f58f6fd2eea70ca8efc8cc7d5",
+                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/5fa792ad1853ae2bc60528dd3e5cbf4542d3c1df",
+                "reference": "5fa792ad1853ae2bc60528dd3e5cbf4542d3c1df",
                 "shasum": ""
             },
             "require": {
@@ -420,7 +420,7 @@
                 "validation",
                 "validator"
             ],
-            "time": "2020-09-26T15:48:38+00:00"
+            "time": "2020-10-31T20:37:35+00:00"
         },
         {
             "name": "fideloper/proxy",
@@ -1059,85 +1059,17 @@
             "time": "2020-10-29T13:07:12+00:00"
         },
         {
-            "name": "laravelcollective/html",
-            "version": "v6.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/LaravelCollective/html.git",
-                "reference": "3bb99be7502feb2129b375cd026ccb0fa4b66628"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/LaravelCollective/html/zipball/3bb99be7502feb2129b375cd026ccb0fa4b66628",
-                "reference": "3bb99be7502feb2129b375cd026ccb0fa4b66628",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/http": "^6.0|^7.0|^8.0",
-                "illuminate/routing": "^6.0|^7.0|^8.0",
-                "illuminate/session": "^6.0|^7.0|^8.0",
-                "illuminate/support": "^6.0|^7.0|^8.0",
-                "illuminate/view": "^6.0|^7.0|^8.0",
-                "php": ">=7.2.5"
-            },
-            "require-dev": {
-                "illuminate/database": "^6.0|^7.0|^8.0",
-                "mockery/mockery": "~1.0",
-                "phpunit/phpunit": "~7.1"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "6.0-dev"
-                },
-                "laravel": {
-                    "providers": [
-                        "Collective\\Html\\HtmlServiceProvider"
-                    ],
-                    "aliases": {
-                        "Form": "Collective\\Html\\FormFacade",
-                        "Html": "Collective\\Html\\HtmlFacade"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Collective\\Html\\": "src/"
-                },
-                "files": [
-                    "src/helpers.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Adam Engebretson",
-                    "email": "adam@laravelcollective.com"
-                },
-                {
-                    "name": "Taylor Otwell",
-                    "email": "taylorotwell@gmail.com"
-                }
-            ],
-            "description": "HTML and Form Builders for the Laravel Framework",
-            "homepage": "https://laravelcollective.com",
-            "time": "2020-09-07T19:59:40+00:00"
-        },
-        {
             "name": "league/commonmark",
-            "version": "1.5.6",
+            "version": "1.5.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/commonmark.git",
-                "reference": "a56e91e0fa1f6d0049153a9c34f63488f6b7ce61"
+                "reference": "11df9b36fd4f1d2b727a73bf14931d81373b9a54"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/a56e91e0fa1f6d0049153a9c34f63488f6b7ce61",
-                "reference": "a56e91e0fa1f6d0049153a9c34f63488f6b7ce61",
+                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/11df9b36fd4f1d2b727a73bf14931d81373b9a54",
+                "reference": "11df9b36fd4f1d2b727a73bf14931d81373b9a54",
                 "shasum": ""
             },
             "require": {
@@ -1219,7 +1151,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-10-17T21:33:03+00:00"
+            "time": "2020-10-31T13:49:32+00:00"
         },
         {
             "name": "league/flysystem",
@@ -4911,16 +4843,16 @@
         },
         {
             "name": "filp/whoops",
-            "version": "2.9.0",
+            "version": "2.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filp/whoops.git",
-                "reference": "2ec31f3adc54c71a59c5e3c2143d7a0e2f8899f8"
+                "reference": "307fb34a5ab697461ec4c9db865b20ff2fd40771"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filp/whoops/zipball/2ec31f3adc54c71a59c5e3c2143d7a0e2f8899f8",
-                "reference": "2ec31f3adc54c71a59c5e3c2143d7a0e2f8899f8",
+                "url": "https://api.github.com/repos/filp/whoops/zipball/307fb34a5ab697461ec4c9db865b20ff2fd40771",
+                "reference": "307fb34a5ab697461ec4c9db865b20ff2fd40771",
                 "shasum": ""
             },
             "require": {
@@ -4968,7 +4900,7 @@
                 "throwable",
                 "whoops"
             ],
-            "time": "2020-10-20T12:00:00+00:00"
+            "time": "2020-11-01T12:00:00+00:00"
         },
         {
             "name": "hamcrest/hamcrest-php",
@@ -5537,23 +5469,23 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "9.2.2",
+            "version": "9.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "229099d7d69fe5044f6e464f669b1fd34f252e8d"
+                "reference": "6b20e2055f7c29b56cb3870b3de7cc463d7add41"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/229099d7d69fe5044f6e464f669b1fd34f252e8d",
-                "reference": "229099d7d69fe5044f6e464f669b1fd34f252e8d",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/6b20e2055f7c29b56cb3870b3de7cc463d7add41",
+                "reference": "6b20e2055f7c29b56cb3870b3de7cc463d7add41",
                 "shasum": ""
             },
             "require": {
                 "ext-dom": "*",
                 "ext-libxml": "*",
                 "ext-xmlwriter": "*",
-                "nikic/php-parser": "^4.8",
+                "nikic/php-parser": "^4.10.2",
                 "php": ">=7.3",
                 "phpunit/php-file-iterator": "^3.0.3",
                 "phpunit/php-text-template": "^2.0.2",
@@ -5606,7 +5538,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-10-28T06:24:13+00:00"
+            "time": "2020-10-30T10:46:41+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
