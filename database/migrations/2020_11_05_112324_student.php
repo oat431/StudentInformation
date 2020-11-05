@@ -15,7 +15,7 @@ class Student extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->integer('student_id')->primary();
-            $table->boolean('approve')->default(false);
+            $table->text('status')->default('0');
             $table->string('username');
             $table->string('password');
             $table->string('student_name');
