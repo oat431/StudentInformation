@@ -10,6 +10,8 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
+    const uap=0;
+    const ap=1;
 
     /**
      * The attributes that are mass assignable.
@@ -40,4 +42,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function isap(){
+        return $this->type===self::ap;
+    }
 }
