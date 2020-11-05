@@ -17,6 +17,7 @@ class Student extends Migration
             $table->integer('student_id')->primary();
             $table->string('status')->default('0');
             $table->string('email');
+            $table->string('username');
             $table->string('password');
             $table->string('student_name');
             $table->string('student_lastname');
