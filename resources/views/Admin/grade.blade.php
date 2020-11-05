@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('Master.master')
 @section('content')
 <!DOCTYPE html>
 <html lang="en">
@@ -24,13 +24,13 @@
         <tbody>
             @foreach ($data as $item)
             <tr>
-            <th scope="row">{{$item->id}}</th>
-            <td>{{$item->name}}</td>
+            <th scope="row">{{$item->student_id}}</th>
+            <td>{{$item->student_name}}</td>
             <td>{{$item->email}}</td>
-            {{-- <td>{{$item->phone}}</td>
+            {{-- <td>{{$item->student_phone}}</td>
             <td>{{$item->gender}}</td>
-            <td>{{$item->age}}</td> --}}
-            <td><a href="{{ route('admin.show',$item->id) }}">grade</a></td>
+            <td>{{$item->birthdate}}</td> --}}
+            <td><a href="{{ route('admin.show',$item->student_id) }}">grade</a></td>
           </tr>
             @endforeach
             {{-- {{ route('admin.destroy',['id'=>$item->id])}} --}}
