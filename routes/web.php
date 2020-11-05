@@ -15,16 +15,20 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    return view('Student.Student');
+    return view('welcome');
 });
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(CheckStatus::class);
+
 Route::resource('admin','App\Http\Controllers\AdminCon')->middleware(CheckStatus::class);
+Route::resource('student','App\Http\Controllers\StudentController');
+Route::resource('course','App\Http\Controllers\CourseController');
+Route::resource('registration','App\Http\Controllers\RegistrationController');
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(CheckStatus::class);
 Route::get('/admin/delete/{id}', 'App\Http\Controllers\AdminCon@destroy')->name('admin.destroy');
 Route::get('/grade',function(){
-    $data = DB::table('users')->whereRaw('status = 1 and id <> 1')->get();
-       return view('admin.grade',compact(['data']));
+    $data = DB::table('students')->whereRaw('status = 1 and student_id <> 1')->get();
+    return view('admin.grade',compact(['data']));
 });
-?>
