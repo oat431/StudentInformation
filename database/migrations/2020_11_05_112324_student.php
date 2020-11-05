@@ -15,14 +15,16 @@ class Student extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->integer('student_id')->primary();
-            $table->string('student_img');
+            $table->boolean('approve')->default(false);
+            $table->string('username');
+            $table->string('password');
             $table->string('student_name');
             $table->string('student_lastname');
-            $table->string('student_phone');
             $table->string('gender');
-            $table->boolean('approve')->default(false);
+            $table->string('student_phone');
             $table->date('birthdate'); 
             $table->float('gpa')->default(0.00);
+            $table->string('student_img');
         });
     }
 
