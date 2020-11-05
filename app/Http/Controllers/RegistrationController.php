@@ -1,11 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\Admin;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-class AdminCon extends Controller
+use Illuminate\Http\Request;
+
+class RegistrationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +13,7 @@ class AdminCon extends Controller
      */
     public function index()
     {
-        $data = DB::table('students')->where('status', '0')->get();
-       return view('admin.ap',compact(['data']));
+        //
     }
 
     /**
@@ -25,7 +23,7 @@ class AdminCon extends Controller
      */
     public function create()
     {
-
+        //
     }
 
     /**
@@ -47,7 +45,15 @@ class AdminCon extends Controller
      */
     public function show($id)
     {
-        return "hello".$id;
+        $studentData = DB::table('students')->where('student_id',$id)->get();
+        $courseData = DB::table('registrations')->where('student_id',$id)->get();
+        $courseOfStudent = [];
+        for($i=0;$i<sizeof($courseData);$i++){
+            $detail = DB::table('courses')->where('course_id',$courseData[$i]->course_id)->get();
+            array_push($courseOfStudent,$detail[0]); 
+        } 
+        // print_r($courseOfStudent);
+        return view('Student.showStudentData',compact(['studentData','courseOfStudent']));
     }
 
     /**
@@ -58,8 +64,7 @@ class AdminCon extends Controller
      */
     public function edit($id)
     {
-        DB::update('update users set status = 1 where id = ?', ["$id"]);
-        return redirect('/admin');
+        //
     }
 
     /**
@@ -82,7 +87,6 @@ class AdminCon extends Controller
      */
     public function destroy($id)
     {
-        DB::delete('delete from users where id = ?', [$id]);
-        return redirect('/admin');
+        //
     }
 }

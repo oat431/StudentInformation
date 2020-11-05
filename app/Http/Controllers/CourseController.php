@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Admin;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-class AdminCon extends Controller
+
+class CourseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +13,7 @@ class AdminCon extends Controller
      */
     public function index()
     {
-        $data = DB::table('students')->where('status', '0')->get();
-       return view('admin.ap',compact(['data']));
+        //
     }
 
     /**
@@ -25,7 +23,7 @@ class AdminCon extends Controller
      */
     public function create()
     {
-
+        //
     }
 
     /**
@@ -47,7 +45,7 @@ class AdminCon extends Controller
      */
     public function show($id)
     {
-        return "hello".$id;
+        //
     }
 
     /**
@@ -58,8 +56,7 @@ class AdminCon extends Controller
      */
     public function edit($id)
     {
-        DB::update('update users set status = 1 where id = ?', ["$id"]);
-        return redirect('/admin');
+        //
     }
 
     /**
@@ -82,7 +79,6 @@ class AdminCon extends Controller
      */
     public function destroy($id)
     {
-        DB::delete('delete from users where id = ?', [$id]);
-        return redirect('/admin');
+        //
     }
 }
