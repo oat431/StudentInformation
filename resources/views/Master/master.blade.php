@@ -187,19 +187,6 @@
    </script>
    @endauth
 
-   @guest
-   <script type="text/javascript">
-      var myFullpage = new fullpage('#fullpage', {
-         /* sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', 'whitesmoke', '#ccddff'], */
-         anchors: ['firstPage', 'secondPage'],
-         navigation: true,
-         navigationTooltips: ['Profile', 'Course'],
-         showActiveTooltip: true,
-         menu: '#menu'
-      });
-   </script>
-   @endguest
-
    <script>
       var prevScrollpos = window.pageYOffset;
       window.onscroll = function() {
