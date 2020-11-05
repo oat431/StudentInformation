@@ -76,14 +76,13 @@
                      {{Form::submit('Detail',['class'=>'btn btn-success'])}}
                      {{Form::close()}}
 
-                     {{Form::open(array('url' => '/','method'=>'delete'))}}
+                     {{Form::open(array('url' => '/'))}}
                      {{Form::submit('Drop',['class'=>'btn btn-danger'])}}
                      {{Form::close()}}
                   </div>
                </td>
             </tr>
          </tbody>
-
       </table>
       <!-- </div>
       </div> -->
