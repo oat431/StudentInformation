@@ -5,8 +5,9 @@ use App\Models\User;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use GuzzleHttp\Middleware;
-use GuzzleHttp\Psr7\Request;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -46,7 +47,27 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function login(){
+    public function login(Request $request){
+        $this->validate($request,[
+            'username' => 'required',
+            'password' => 'required'
+        ]);
+        $user_data = array(
+            'email' => $request->get('username'),
+            'password' => $request->get('password')
+        ); 
+        if(Auth::attempt($user_data)){
+            $user_id = Auth::user()->id;
+            echo $user_id;
+            return redirect("/student/".$user_id);
+        }else{
+            return redirect("/");
+        }
+
+    }
+
+    public function logout(){
+        Auth::logout();
         return redirect("/");
     }
 }
