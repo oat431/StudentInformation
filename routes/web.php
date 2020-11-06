@@ -16,10 +16,21 @@ Route::get('/enroll', function () {
     return view('Student.Enroll');
 });
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(CheckStatus::class);
+/**resource part */
 Route::resource('admin', 'App\Http\Controllers\AdminCon')->middleware(CheckStatus::class);
+Route::resource('student','App\Http\Controllers\StudentController');
+Route::resource('course','App\Http\Controllers\CourseController');
+Route::resource('registration','App\Http\Controllers\RegistrationController');
+
+/**end */
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(CheckStatus::class);
+
 Route::get('/admin/delete/{id}', 'App\Http\Controllers\AdminCon@destroy')->name('admin.destroy');
 Route::get('/grade', function () {
     $data = DB::table('users')->whereRaw('status = 1 and id <> 1')->get();
     return view('admin.grade', compact(['data']));
 });
+
+
+Route::post('/student','App\Http\Controllers\StudentController@store');
+Route::post('/login','App\Http\Controllers\Auth\LoginController@login');
