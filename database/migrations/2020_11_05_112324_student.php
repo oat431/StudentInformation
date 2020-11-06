@@ -11,20 +11,20 @@ class Student extends Migration
      *
      * @return void
      */
-    public function up()
-    {
-        Schema::create('students', function (Blueprint $table) {
-            $table->integer('student_id')->primary();
+         Schema::create('users', function (Blueprint $table) {
+            $table->id();
             $table->boolean('approve')->default(false);
-            $table->string('username');
+		    $table->String('role')->default('student');
+            $table->string('email')->unique();
             $table->string('password');
-            $table->string('student_name');
-            $table->string('student_lastname');
-            $table->string('gender');
-            $table->string('student_phone');
-            $table->date('birthdate'); 
+            $table->string('name');
+            $table->string('gender')->default('none');
+            $table->string('student_phone')->default('none');
+            $table->string('birthdate')->default('none');
             $table->float('gpa')->default(0.00);
-            $table->string('student_img');
+            $table->string('student_img')->default('../assets/unknown.png');
+            $table->rememberToken();
+            $table->timestamps();
         });
     }
 
@@ -35,6 +35,6 @@ class Student extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('students');
+        Schema::dropIfExists('users');
     }
 }
