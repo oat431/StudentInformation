@@ -12,7 +12,7 @@ class AdminCon extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(){
         $data = DB::table('users')->where('approve', '0')->get();
         return view('admin.ap',compact(['data']));
     }

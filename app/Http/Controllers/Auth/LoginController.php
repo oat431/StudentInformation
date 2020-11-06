@@ -47,7 +47,6 @@ class LoginController extends Controller
     }
 
     public function login(){
-        echo "you loggin in";
         return redirect("/");
     }
 }
