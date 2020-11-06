@@ -7,10 +7,14 @@ use Illuminate\Support\Facades\Auth;
 
 
 Route::get('/', function () {
-    return view('Student.Enroll');
+    return view('Student.student');
 });
 
 Auth::routes();
+
+Route::get('/enroll', function () {
+    return view('Student.Enroll');
+});
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(CheckStatus::class);
 Route::resource('admin', 'App\Http\Controllers\AdminCon')->middleware(CheckStatus::class);
