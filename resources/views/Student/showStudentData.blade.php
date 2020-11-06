@@ -17,13 +17,13 @@
                      <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" style="margin-right:5%;width:280px;height:280px">
                   </div>
                   <div class="col-3" style="margin-top:6%">
-                     <h5>Name: {{$studentData[0]->student_name}}</h5>
+                     <h5>Name: {{$studentData[0]->name}}</h5>
                      <h5>Gender: {{$studentData[0]->gender}}</h5>
                      <h5>Birth Date: {{$studentData[0]->birthdate}}</h5>
                      <h5>GPA:{{$studentData[0]->gpa}}</h5>
                   </div>
                   <div class="col-5" style="margin-top:6%">
-                     <h5>Lastname: {{$studentData[0]->student_lastname}}</h5>
+                     <h5>Lastname: </h5>
                      <h5>Phone: {{$studentData[0]->student_phone}}</h5>
                      <h5>Age: xxx </h5>
                   </div>
@@ -34,15 +34,8 @@
 
    </div>
 </div>
-
 <div class="section BG3" id="section">
    <div class="container">
-      <!--  <div class="card text-dark border-dark">
-         <div class="card-body">
-            <div class="card-title"> -->
-
-      <!-- </div>
-            <br> -->
       <div class="row" style="margin-top: 5%;">
          <div class="col">
             <h1>Current Course</h1>
@@ -86,9 +79,6 @@
             @endforeach
          </tbody>
       </table>
-      <!-- </div>
-      </div> -->
-
    </div>
 </div>
 @endsection
