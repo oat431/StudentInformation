@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 
 class StudentController extends Controller
 {
@@ -34,7 +36,27 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+           'regname' => 'required',
+           'reglastname' => 'required',
+           'regusername' => 'required',
+           'regpassword' => 'required',
+           'regbirthdate' => 'required',
+           'regphone' => 'required',
+           'Gender' => 'required',
+           'image' =>'required'
+        ]); 
+        $student = new User;
+        $student->name = $data['regname'];
+        //$student->reglastname = $data['reglastname'];
+        $student->email = $data['regusername'];
+        $student->password = Hash::make($data['regpassword']);
+        $student->birthdate = $data['regbirthdate'];
+        $student->student_phone = $data['regphone'];
+        $student->gender = $data['Gender'];
+        $student->student_img = $data['image'];
+        $student->save();
+        return redirect('/');
     }
 
     /**
@@ -45,8 +67,8 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        $data = DB::table('students')->where('student_id',$id)->get();
-        return view('Student.showStudentData',compact(['data']));
+        $studentData = DB::table('users')->where('id',$id)->get();
+        return view('Student.showStudentData',compact(['studentData']));
     }
 
     /**

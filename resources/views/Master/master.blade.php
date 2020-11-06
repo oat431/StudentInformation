@@ -46,7 +46,7 @@
                </a>
                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item" data-target="#editprofile" data-toggle="modal">Edit Profile</a>
-                  <a class="dropdown-item" href="#">Log Out</a>
+                  <a class="dropdown-item" href="/logout">Log Out</a>
                </div>
             </li>
          </ul>
@@ -89,21 +89,21 @@
          </div>
       </div> -->
 
-      @auth
+      @guest
       <div class="section BG1" id="section">
          <div class="container">
             <h1 style="color:darkmagenta;">Welcome to KueMunLue Wittayakom Website</h1>
             <h2 style="color:darkmagenta;">Please Login to access the website :)</h2>
          </div>
       </div>
-      @endauth
+      @endguest
 
-      @guest
+      @auth
 
       @yield('section')
       <!-- Yield -->
 
-      @endguest
+      @endauth
    </div>
 
    <!-- Login Form Popup -->
@@ -113,7 +113,7 @@
             <div class="modal-body">
                <button data-dismiss="modal" class="close">&times;</button>
                <h4 style="color: white;">Login</h4>
-               {{ Form::open(array('url' => '/')) }}
+               {{ Form::open(array('url' => '/login' ,'method' => 'post','action'=>'LoginController@login')) }}
                <div class="row">
                   <div class="col-12">
                      {{Form::text('username','',['class'=>'username form-control','style'=>'background: transparent;','placeholder'=>'Username'])}}
@@ -138,7 +138,7 @@
             <div class="modal-body">
                <button data-dismiss="modal" class="close">&times;</button>
                <h4 style="color: white;">Register</h4>
-               {{ Form::open(array('url' => '/')) }}
+               {{ Form::open(array('url' => '/student','method'=>'post','action' => 'StudentController@store')) }}
                <div class="row">
                   <div class="col-5">
                      {{Form::text('regname','',['class'=>'username form-control','style'=>'background: transparent;','placeholder'=>'Name'])}}
