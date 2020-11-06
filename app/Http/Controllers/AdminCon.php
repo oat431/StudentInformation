@@ -15,7 +15,7 @@ class AdminCon extends Controller
     public function index()
     {
         $data = DB::table('users')->where('status', '0')->get();
-       return view('admin.ap',compact(['data']));
+        return view('admin.ap', compact(['data']));
     }
 
     /**
@@ -25,7 +25,6 @@ class AdminCon extends Controller
      */
     public function create()
     {
-
     }
 
     /**
@@ -47,7 +46,7 @@ class AdminCon extends Controller
      */
     public function show($id)
     {
-        return "hello".$id;
+        return "hello" . $id;
     }
 
     /**
