@@ -54,9 +54,9 @@
             <h1>Course</h1>
          </div>
          <div class="col-3" style="text-align: end;margin-top:1.5%">
-            {{Form::open(array('url' => '/'))}}
-            {{Form::submit('Add Course',['class'=>'btn btn-success'])}}
-            {{Form::close()}}
+            <!--  {{Form::open(array('url' => '/'))}} -->
+            {{Form::submit('Add Course',['class'=>'btn btn-success','data-target'=>'#addcourse', 'data-toggle'=>'modal'])}}
+            <!--  {{Form::close()}} -->
          </div>
       </div>
       <table class="table table-hover">
@@ -65,7 +65,6 @@
                <th scope="col">Course ID</th>
                <th scope="col">Course Name</th>
                <th scope="col">Credit</th>
-               <th scope="col">Grade</th>
                <th scope="col">Operation</th>
             </tr>
          </thead>
@@ -75,15 +74,12 @@
                <th scope="row">xxxxxx</th>
                <td>xxxxxxxxxxxx</td>
                <td>xxxxxxxxx</td>
-               <td>xxxxxxxxx</td>
                <td>
                   <div class="row">
-                     {{Form::open(array('url' => '/','method'=>'get','style'=>'margin-right:2%'))}}
-                     {{Form::submit('Edit',['class'=>'btn btn-primary'])}}
-                     {{Form::close()}}
+                     {{Form::submit('Edit',['class'=>'btn btn-primary','style'=>'margin-right:2%','data-target'=>'#editcourse', 'data-toggle'=>'modal'])}}
 
                      {{Form::open(array('url' => '/'))}}
-                     {{Form::submit('Delete',['class'=>'btn btn-danger'])}}
+                     {{Form::submit('Delete',['class'=>'btn btn-danger','onclick'=>'return confirm("Delete or not?");'])}}
                      {{Form::close()}}
                   </div>
                </td>
@@ -118,12 +114,10 @@
                <td>xxxxxxxxx</td>
                <td>
                   <div class="row">
-                     {{Form::open(array('url' => '/','method'=>'get','style'=>'margin-right:2%'))}}
-                     {{Form::submit('Edit',['class'=>'btn btn-primary'])}}
-                     {{Form::close()}}
+                     {{Form::submit('Edit',['class'=>'btn btn-primary','style'=>'margin-right:2%','data-target'=>'#editgrade', 'data-toggle'=>'modal'])}}
 
                      {{Form::open(array('url' => '/'))}}
-                     {{Form::submit('Delete',['class'=>'btn btn-danger'])}}
+                     {{Form::submit('Delete',['class'=>'btn btn-danger','onclick'=>'return confirm("Delete or not?");'])}}
                      {{Form::close()}}
                   </div>
                </td>
@@ -166,7 +160,7 @@
                <td>
                   <div class="row">
                      {{Form::open(array('url' => '/'))}}
-                     {{Form::submit('Delete',['class'=>'btn btn-danger'])}}
+                     {{Form::submit('Delete',['class'=>'btn btn-danger','onclick'=>'return confirm("Delete or not?");'])}}
                      {{Form::close()}}
                   </div>
                </td>
@@ -175,6 +169,10 @@
       </table>
    </div>
 </div>
+
+
+
+
 
 <script type="text/javascript">
    var myFullpage = new fullpage('#fullpage', {

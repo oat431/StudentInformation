@@ -36,7 +36,7 @@
          <span class="navbar-toggler-icon"></span>
       </button>
 
-      @guest
+      @auth
       <div class="collapse navbar-collapse " id="navbar-list-4">
          <ul class="navbar-nav ml-auto mr-1">
             <h6 style="margin:auto auto">Username</h6>
@@ -45,22 +45,22 @@
                   <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="50" height="50" class="rounded-circle">
                </a>
                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Edit Profile</a>
+                  <a class="dropdown-item" data-target="#editprofile" data-toggle="modal">Edit Profile</a>
                   <a class="dropdown-item" href="#">Log Out</a>
                </div>
             </li>
          </ul>
       </div>
-      @endguest
+      @endauth
 
-      @auth
+      @guest
       <div class="collapse navbar-collapse " id="navbar-list-4">
          <ul class="navbar-nav ml-auto mr-1">
             <a type="button" href="#" class="btn btn-success" data-target="#login" data-toggle="modal" style="color: white; margin-right:5%">Login</a>
             <a type="button" href="#" class="btn btn-success" data-target="#register" data-toggle="modal" style="color: white;">Register</a>
          </ul>
       </div>
-      @endauth
+      @endguest
 
    </nav>
 
@@ -112,7 +112,7 @@
          <div class="modal-content">
             <div class="modal-body">
                <button data-dismiss="modal" class="close">&times;</button>
-               <h4>Login</h4>
+               <h4 style="color: white;">Login</h4>
                {{ Form::open(array('url' => '/')) }}
                <div class="row">
                   <div class="col-12">
@@ -137,7 +137,7 @@
          <div class="modal-content">
             <div class="modal-body">
                <button data-dismiss="modal" class="close">&times;</button>
-               <h4>Register</h4>
+               <h4 style="color: white;">Register</h4>
                {{ Form::open(array('url' => '/')) }}
                <div class="row">
                   <div class="col-5">
@@ -165,6 +165,110 @@
                   </div>
                   <div class="col-12">
                      {{Form::submit('Register',['class'=>'btn login'])}}
+                  </div>
+               </div>
+               {{ Form::close() }}
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <!-- Edit Profile form -->
+   <div id="editprofile" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+         <div class="modal-content">
+            <div class="modal-body">
+               <h4 style="color: white;">Edit Profile</h4>
+               {{ Form::open(array('url' => '/')) }}
+               <div class="row">
+                  <div class="col-5">
+                     {{Form::text('editname','',['class'=>'username form-control','style'=>'background: transparent;','placeholder'=>'Name'])}}
+                  </div>
+                  <div class="col-7">
+                     {{Form::text('editlastname','',['class'=>'username form-control','style'=>'background: transparent;','placeholder'=>'Lastname'])}}
+                  </div>
+                  <div class="col-12">
+                     {{Form::select('Gender', ['Male' => 'Male', 'Female' => 'Female'])}}
+                     {{Form::date('editbirthdate', \Carbon\Carbon::now(),['class'=>'datebirth'])}}
+                  </div>
+                  <div class="col-12">
+                     {{Form::number('editphone','',['class'=>'username form-control','style'=>'background: transparent;','placeholder'=>'Phone'])}}
+                  </div>
+                  <div class="col-12">
+                     {{Form::label('Profile picture','',['style'=>'color:white'])}}
+                     {{Form::file('image',['class'=>'file','accept'=>'image/*'])}}
+                  </div>
+                  <div class="col-12">
+                     {{Form::submit('Change',['class'=>'btn login'])}}
+                  </div>
+               </div>
+               {{ Form::close() }}
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <!-- Add course form -->
+   <div id="addcourse" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+         <div class="modal-content">
+            <div class="modal-body">
+               <h4 style="color: white;">Add course</h4>
+               {{ Form::open(array('url' => '/')) }}
+               <div class="row">
+                  <div class="col-5">
+                     {{Form::text('coursename','',['class'=>'username form-control','style'=>'background: transparent;','placeholder'=>'Course Name'])}}
+                  </div>
+                  <div class="col-7">
+                     {{Form::text('coursecredit','',['class'=>'username form-control','style'=>'background: transparent;','placeholder'=>'Credit'])}}
+                  </div>
+                  <div class="col-12">
+                     {{Form::submit('Add',['class'=>'btn login'])}}
+                  </div>
+               </div>
+               {{ Form::close() }}
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <!-- Edit course form -->
+   <div id="editcourse" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+         <div class="modal-content">
+            <div class="modal-body">
+               <h4 style="color: white;">Edit course</h4>
+               {{ Form::open(array('url' => '/')) }}
+               <div class="row">
+                  <div class="col-5">
+                     {{Form::text('editcoursename','',['class'=>'username form-control','style'=>'background: transparent;','placeholder'=>'Course Name'])}}
+                  </div>
+                  <div class="col-7">
+                     {{Form::text('editcoursecredit','',['class'=>'username form-control','style'=>'background: transparent;','placeholder'=>'Credit'])}}
+                  </div>
+                  <div class="col-12">
+                     {{Form::submit('Change',['class'=>'btn login'])}}
+                  </div>
+               </div>
+               {{ Form::close() }}
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <!-- Edit grade form -->
+   <div id="editgrade" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+         <div class="modal-content">
+            <div class="modal-body">
+               <h4 style="color: white;">Edit Student Grade</h4>
+               {{ Form::open(array('url' => '/')) }}
+               <div class="row">
+                  <div class="col-7">
+                     {{Form::text('gradeedit','',['class'=>'username form-control','style'=>'background: transparent;','placeholder'=>'Grade'])}}
+                  </div>
+                  <div class="col-12">
+                     {{Form::submit('Add',['class'=>'btn login'])}}
                   </div>
                </div>
                {{ Form::close() }}

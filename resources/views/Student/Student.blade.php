@@ -42,9 +42,7 @@
             <h1>Current Course</h1>
          </div>
          <div class="col-3" style="text-align: end;margin-top:1.5%">
-            {{Form::open(array('url' => '/'))}}
-            {{Form::submit('Add Course',['class'=>'btn btn-success'])}}
-            {{Form::close()}}
+            <a href="/enroll" type="button" class="btn btn-success"> Add Course</a>
          </div>
       </div>
       <table class="table table-hover">
@@ -71,7 +69,7 @@
                      {{Form::close()}} -->
 
                      {{Form::open(array('url' => '/'))}}
-                     {{Form::submit('Drop',['class'=>'btn btn-danger'])}}
+                     {{Form::submit('Drop',['class'=>'btn btn-danger','onclick'=>'return confirm("Are you sure to drop this subject?");'])}}
                      {{Form::close()}}
                   </div>
                </td>
