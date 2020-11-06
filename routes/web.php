@@ -32,5 +32,8 @@ Route::get('/grade', function () {
 });
 
 
+Route::get('/student/{id}','App\Http\Controllers\StudentController@show');
+
 Route::post('/student','App\Http\Controllers\StudentController@store');
 Route::post('/login','App\Http\Controllers\Auth\LoginController@login');
+Route::get('/logout','App\Http\Controllers\Auth\LoginController@logout');

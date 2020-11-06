@@ -20,6 +20,7 @@ class Student extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('name');
+            $table->string('lastname');
             $table->string('gender')->default('none');
             $table->string('student_phone')->default('none');
             $table->string('birthdate')->default('none');

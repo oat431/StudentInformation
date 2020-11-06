@@ -67,8 +67,8 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        $data = DB::table('students')->where('student_id',$id)->get();
-        return view('Student.showStudentData',compact(['data']));
+        $studentData = DB::table('users')->where('id',$id)->get();
+        return view('Student.showStudentData',compact(['studentData']));
     }
 
     /**
