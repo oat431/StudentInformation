@@ -14,7 +14,7 @@ class AdminCon extends Controller
      */
     public function index()
     {
-        $data = DB::table('students')->where('status', '0')->get();
+        $data = DB::table('users')->where('status', '0')->get();
        return view('admin.ap',compact(['data']));
     }
 
