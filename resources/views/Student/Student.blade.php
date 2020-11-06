@@ -37,20 +37,12 @@
 
 <div class="section BG3" id="section">
    <div class="container">
-      <!--  <div class="card text-dark border-dark">
-         <div class="card-body">
-            <div class="card-title"> -->
-
-      <!-- </div>
-            <br> -->
       <div class="row" style="margin-top: 5%;">
          <div class="col">
             <h1>Current Course</h1>
          </div>
          <div class="col-3" style="text-align: end;margin-top:1.5%">
-            {{Form::open(array('url' => '/'))}}
-            {{Form::submit('Add Course',['class'=>'btn btn-success'])}}
-            {{Form::close()}}
+            <a href="/enroll" type="button" class="btn btn-success"> Add Course</a>
          </div>
       </div>
       <table class="table table-hover">
@@ -72,21 +64,29 @@
                <td>xxxxxxxxx</td>
                <td>
                   <div class="row">
-                     {{Form::open(array('url' => '/','method'=>'get','style'=>'margin-right:4%'))}}
+                     <!-- {{Form::open(array('url' => '/','method'=>'get','style'=>'margin-right:4%'))}}
                      {{Form::submit('Detail',['class'=>'btn btn-success'])}}
-                     {{Form::close()}}
+                     {{Form::close()}} -->
 
                      {{Form::open(array('url' => '/'))}}
-                     {{Form::submit('Drop',['class'=>'btn btn-danger'])}}
+                     {{Form::submit('Drop',['class'=>'btn btn-danger','onclick'=>'return confirm("Are you sure to drop this subject?");'])}}
                      {{Form::close()}}
                   </div>
                </td>
             </tr>
          </tbody>
       </table>
-      <!-- </div>
-      </div> -->
-
    </div>
 </div>
+
+<script type="text/javascript">
+   var myFullpage = new fullpage('#fullpage', {
+      /* sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', 'whitesmoke', '#ccddff'], */
+      anchors: ['firstPage', 'secondPage'],
+      navigation: true,
+      navigationTooltips: ['Profile', 'Course'],
+      showActiveTooltip: true,
+      menu: '#menu'
+   });
+</script>
 @endsection
