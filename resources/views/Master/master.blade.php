@@ -113,7 +113,7 @@
             <div class="modal-body">
                <button data-dismiss="modal" class="close">&times;</button>
                <h4 style="color: white;">Login</h4>
-               {{ Form::open(array('url' => '/')) }}
+               {{ Form::open(array('url' => '/login' ,'method' => 'post','action'=>'LoginController@login')) }}
                <div class="row">
                   <div class="col-12">
                      {{Form::text('username','',['class'=>'username form-control','style'=>'background: transparent;','placeholder'=>'Username'])}}
@@ -138,7 +138,7 @@
             <div class="modal-body">
                <button data-dismiss="modal" class="close">&times;</button>
                <h4 style="color: white;">Register</h4>
-               {{ Form::open(array('url' => '/')) }}
+               {{ Form::open(array('url' => '/student','method'=>'post','action' => 'StudentController@store')) }}
                <div class="row">
                   <div class="col-5">
                      {{Form::text('regname','',['class'=>'username form-control','style'=>'background: transparent;','placeholder'=>'Name'])}}
