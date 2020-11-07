@@ -24,7 +24,6 @@ class AdminCon extends Controller
      */
     public function create()
     {
-
     }
 
     /**
@@ -46,7 +45,7 @@ class AdminCon extends Controller
      */
     public function show($id)
     {
-        return "hello".$id;
+        return "hello" . $id;
     }
 
     /**

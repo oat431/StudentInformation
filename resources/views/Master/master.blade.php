@@ -90,10 +90,12 @@
       </div> -->
 
       @guest
-      <div class="section BG1" id="section">
+      <div class="section BG1" id="section2">
          <div class="container">
+
             <h1 style="color:darkmagenta;">Welcome to KueMunLue Wittayakom Website</h1>
             <h2 style="color:darkmagenta;">Please Login to access the website :)</h2>
+
          </div>
       </div>
       @endguest
@@ -278,7 +280,7 @@
    </div>
 
    <!-- Optional JavaScript -->
-   @auth
+   @guest
    <script type="text/javascript">
       var myFullpage = new fullpage('#fullpage', {
          /* sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', 'whitesmoke', '#ccddff'], */
@@ -289,7 +291,7 @@
          menu: '#menu'
       });
    </script>
-   @endauth
+   @endguest
 
    <script>
       var prevScrollpos = window.pageYOffset;
