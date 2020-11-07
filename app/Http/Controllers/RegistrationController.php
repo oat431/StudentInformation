@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\Models\Registration;
 
 class RegistrationController extends Controller
 {
@@ -34,7 +35,15 @@ class RegistrationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'student_id' => 'required',
+            'course_id' => 'required'
+        ]);
+        $regis = new Registration;
+        $regis->student_id = $data['student_id'];
+        $regis->course_id = $data['course_id'];
+        $regis->save();
+        return redirect('/student/'.$data['student_id']);
     }
 
     /**

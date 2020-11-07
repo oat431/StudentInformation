@@ -21,18 +21,23 @@
          </thead>
 
          <tbody>
+            @foreach($courseData as $item);
             <tr>
-               <th scope="row">xxxxxx</th>
-               <td>xxxxxxxxxxxx</td>
-               <td>xxxxxxxxx</td>
+               <th scope="row">{{$item->course_id}}</th>
+               <td>{{$item->course_name}}</td>
+               <td>{{$item->credit}}</td>
                <td>
                   <div class="row">
-                     {{Form::open(array('url' => '/'))}}
-                     {{Form::submit('Add Course to list',['class'=>'btn btn-primary'])}}
-                     {{Form::close()}}
+                     <form action="/registration" method="post">
+                        @csrf
+                        <input type="hidden" name="student_id" value="{{$id}}"/> 
+                        <input type="hidden" name="course_id" value="{{$item->course_id}}"/>
+                        <input type="submit" class='btn btn-success' value="add course"/>
+                     </form>
                   </div>
                </td>
             </tr>
+            @endforeach
          </tbody>
       </table>
    </div>

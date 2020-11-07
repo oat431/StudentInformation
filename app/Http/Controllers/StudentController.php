@@ -48,7 +48,7 @@ class StudentController extends Controller
         ]); 
         $student = new User;
         $student->name = $data['regname'];
-        //$student->reglastname = $data['reglastname'];
+        $student->lastname = $data['reglastname'];
         $student->email = $data['regusername'];
         $student->password = Hash::make($data['regpassword']);
         $student->birthdate = $data['regbirthdate'];
@@ -68,7 +68,15 @@ class StudentController extends Controller
     public function show($id)
     {
         $studentData = DB::table('users')->where('id',$id)->get();
-        return view('Student.showStudentData',compact(['studentData']));
+        $courseData = DB::table('registrations')->where('student_id',$id)->get();
+        $courseOfStudent = [];
+        for($i=0;$i<sizeof($courseData);$i++){
+            $detail = DB::table('courses')->where('course_id',$courseData[$i]->course_id)->get();
+            $detail[0]->grade = $courseData[$i]->grade; 
+            array_push($courseOfStudent,$detail[0]);
+        } 
+        // print_r($courseOfStudent);
+        return view('Student.showStudentData',compact(['studentData','courseOfStudent']));
     }
 
     /**
