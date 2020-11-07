@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class CourseController extends Controller
 {
     /**
@@ -13,7 +13,6 @@ class CourseController extends Controller
      */
     public function index()
     {
-        //
     }
 
     /**
@@ -45,7 +44,13 @@ class CourseController extends Controller
      */
     public function show($id)
     {
-        //
+        $courseList = DB::table('registrations')->where('student_id','<>',$id)->get();
+        $courseData = [];
+        for($i=0;$i<sizeof($courseList);$i++){
+            $data = DB::table('courses')->where('course_id',$courseList[$i]->course_id)->get();
+            array_push($courseData,$data[0]);
+        }
+        return view('Student.Enroll',compact(['courseData','id']));
     }
 
     /**
