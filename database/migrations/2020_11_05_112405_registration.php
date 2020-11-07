@@ -21,34 +21,7 @@ class Registration extends Migration
             $table->string('grade')->nullable();
             $table->boolean('ce')->default(true);
         });
-        DB::table('registrations')->insert(
-            array(
-                'registration_id' => '1',
-                'student_id' => '2',
-                'course_id' => '953233',
-            )
-        );
-        DB::table('registrations')->insert(
-            array(
-                'registration_id' => '2',
-                'student_id' => '2',
-                'course_id' => '953261',
-            )
-        );
-        DB::table('registrations')->insert(
-            array(
-                'registration_id' => '3',
-                'student_id' => '2',
-                'course_id' => '953212',
-            )
-        );
-        DB::table('registrations')->insert(
-            array(
-                'registration_id' => '4',
-                'student_id' => '2',
-                'course_id' => '953361',
-            )
-        );
+        
     }
 
     /**
