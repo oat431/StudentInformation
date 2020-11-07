@@ -31,54 +31,6 @@
             </div>
          </div>
       </div>
-
-   </div>
-</div>
-<div class="section BG3" id="section">
-   <div class="container">
-      <div class="row" style="margin-top: 5%;">
-         <div class="col">
-            <h1>Current Course</h1>
-         </div>
-         <div class="col-3" style="text-align: end;margin-top:1.5%">
-            {{Form::open(array('url' => '/'))}}
-            {{Form::submit('Add Course',['class'=>'btn btn-success'])}}
-            {{Form::close()}}
-         </div>
-      </div>
-      <table class="table table-hover">
-         <thead>
-            <tr>
-               <th scope="col">Course ID</th>
-               <th scope="col">Course Name</th>
-               <th scope="col">Credit</th>
-               <th scope="col">Grade</th>
-               <th scope="col">Operation</th>
-            </tr>
-         </thead>
-
-         <tbody>
-             @foreach ($courseOfStudent as $list)
-            <tr>
-               <th scope="row">{{$list->course_id}}</th>
-               <td>{{$list->course_name}}</td>
-               <td>{{$list->credit}}</td>
-               <td>{{$list->grade}}</td>
-               <td>
-                  <div class="row">
-                     {{Form::open(array('url' => '/','method'=>'get','style'=>'margin-right:4%'))}}
-                     {{Form::submit('Detail',['class'=>'btn btn-success'])}}
-                     {{Form::close()}}
-
-                     {{Form::open(array('url' => '/'))}}
-                     {{Form::submit('Drop',['class'=>'btn btn-danger'])}}
-                     {{Form::close()}}
-                  </div>
-               </td>
-            </tr>
-            @endforeach
-         </tbody>
-      </table>
    </div>
 </div>
 @endsection

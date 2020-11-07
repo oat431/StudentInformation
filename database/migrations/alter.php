@@ -14,13 +14,6 @@ class Registration extends Migration
      */
     public function up()
     {
-        Schema::create('registrations', function (Blueprint $table) {
-            $table->integer('registration_id')->primary();
-            $table->integer('student_id');
-            $table->integer('course_id');
-            $table->string('grade')->nullable();
-            $table->boolean('ce')->default(true);
-        });
         DB::table('registrations')->insert(
             array(
                 'registration_id' => '1',
