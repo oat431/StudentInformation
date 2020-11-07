@@ -25,7 +25,6 @@ class AdminCon extends Controller
      */
     public function create()
     {
-
     }
 
     /**
@@ -62,7 +61,6 @@ class AdminCon extends Controller
              $_SESSION['message'] = "This student have nothing to do with";
             return redirect('/grade');
         }
-
     }
 
     /**
