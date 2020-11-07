@@ -33,7 +33,9 @@ Route::get('/grade', function () {
 Route::get('/updategrade','App\Http\Controllers\AdminCon@update');
 
 Route::get('/student/{id}','App\Http\Controllers\StudentController@show');
+Route::get('/enroll/{id}','App\Http\Controllers\CourseController@show');
 
+Route::post('/registration',"App\Http\Controllers\RegistrationController@store");
 Route::post('/student','App\Http\Controllers\StudentController@store');
 Route::post('/login','App\Http\Controllers\Auth\LoginController@login');
 Route::get('/logout','App\Http\Controllers\Auth\LoginController@logout');
