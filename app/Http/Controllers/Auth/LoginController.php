@@ -57,9 +57,15 @@ class LoginController extends Controller
             'password' => $request->get('password')
         ); 
         if(Auth::attempt($user_data)){
-            $user_id = Auth::user()->id;
-            echo $user_id;
-            return redirect("/student/".$user_id);
+            $user_role = Auth::user()->role;
+            echo($user_role);
+            if($user_role == 'admin'){
+                return redirect('/home');
+            } 
+            if($user_role == 'student'){
+                $user_id = Auth::user()->id; 
+                return redirect("/student/".$user_id);
+            }
         }else{
             return redirect("/");
         }

@@ -12,9 +12,10 @@ class AdminCon extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(){
-        $data = DB::table('users')->where('approve', '0')->get();
-        return view('admin.ap',compact(['data']));
+    public function index()
+    {
+        $data = DB::table('users')->where('approve', 0)->get();
+       return view('admin.ap',compact(['data']));
     }
 
     /**
@@ -46,7 +47,22 @@ class AdminCon extends Controller
      */
     public function show($id)
     {
-        return "hello".$id;
+        $data = DB::select('SELECT name,c.course_id,c.course_name,r.student_id,c.credit from users
+        inner join registrations r on id = r.student_id
+        inner join courses c on c.course_id = r.course_id
+        where id = ? and r.ce = 1', [$id]);
+        if(!empty($data)){
+           $form = json_encode($data);
+        $form = json_decode($form,true);
+        session_start();
+        $_SESSION['student'] = $form[0]["name"];
+        return view('admin.assignGrade',compact(['data']));
+        }else{
+            session_start();
+             $_SESSION['message'] = "This student have nothing to do with";
+            return redirect('/grade');
+        }
+
     }
 
     /**
@@ -57,7 +73,7 @@ class AdminCon extends Controller
      */
     public function edit($id)
     {
-        DB::update('update users set status = 1 where id = ?', ["$id"]);
+        DB::update('update users set approve = true where id = ?', ["$id"]);
         return redirect('/admin');
     }
 
@@ -68,9 +84,13 @@ class AdminCon extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $cid = $_GET['cid'];
+        $sid = $_GET['sid'];
+        $grade = $_GET['grade'];
+        DB::update('UPDATE registrations set grade = ? , ce=0 where student_id = ? and course_id=?', [$grade,$sid,$cid]);
+        return redirect('/grade');
     }
 
     /**
