@@ -18,7 +18,7 @@ class CheckStatus{
     public function handle(Request $request, Closure $next)
     {
 
-        if(Auth::user()->status==0){
+        if(Auth::user()->approve==0){
             Auth::logout();
             $request->session()->flush();
            return redirect('/login?status=wap');

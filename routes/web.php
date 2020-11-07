@@ -27,13 +27,15 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/admin/delete/{id}', 'App\Http\Controllers\AdminCon@destroy')->name('admin.destroy');
 Route::get('/grade', function () {
-    $data = DB::table('users')->whereRaw('status = 1 and id <> 1')->get();
+    $data = DB::table('users')->whereRaw('approve = 1 and id <> 1')->get();
     return view('admin.grade', compact(['data']));
 });
-
+Route::get('/updategrade','App\Http\Controllers\AdminCon@update');
 
 Route::get('/student/{id}','App\Http\Controllers\StudentController@show');
+Route::get('/enroll/{id}','App\Http\Controllers\CourseController@show');
 
+Route::post('/registration',"App\Http\Controllers\RegistrationController@store");
 Route::post('/student','App\Http\Controllers\StudentController@store');
 Route::post('/login','App\Http\Controllers\Auth\LoginController@login');
 Route::get('/logout','App\Http\Controllers\Auth\LoginController@logout');

@@ -23,7 +23,7 @@
                      <h5>GPA:{{$studentData[0]->gpa}}</h5>
                   </div>
                   <div class="col-5" style="margin-top:6%">
-                     <h5>Lastname: </h5>
+                     <h5>Lastname: {{$studentData[0]->lastname}}</h5>
                      <h5>Phone: {{$studentData[0]->student_phone}}</h5>
                      <h5>Age: xxx </h5>
                   </div>
@@ -31,7 +31,6 @@
             </div>
          </div>
       </div>
-
    </div>
 </div>
 <div class="section BG3" id="section">
@@ -41,9 +40,7 @@
             <h1>Current Course</h1>
          </div>
          <div class="col-3" style="text-align: end;margin-top:1.5%">
-            {{Form::open(array('url' => '/'))}}
-            {{Form::submit('Add Course',['class'=>'btn btn-success'])}}
-            {{Form::close()}}
+           <a href="/enroll/{{$studentData[0]->id}}"><button class="btn btn-success">add course</button></a>  
          </div>
       </div>
       <table class="table table-hover">
@@ -81,4 +78,14 @@
       </table>
    </div>
 </div>
+<script type="text/javascript">
+   var myFullpage = new fullpage('#fullpage', {
+      /* sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', 'whitesmoke', '#ccddff'], */
+      anchors: ['firstPage', 'secondPage'],
+      navigation: true,
+      navigationTooltips: ['Profile', 'Course'],
+      showActiveTooltip: true,
+      menu: '#menu'
+   });
+</script>
 @endsection

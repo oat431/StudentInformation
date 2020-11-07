@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 
-class Registration extends Migration
+class alter extends Migration
 {
     /**
      * Run the migrations.
@@ -14,13 +14,6 @@ class Registration extends Migration
      */
     public function up()
     {
-        Schema::create('registrations', function (Blueprint $table) {
-            $table->id('registration_id');
-            $table->integer('student_id');
-            $table->integer('course_id');
-            $table->string('grade')->nullable();
-            $table->boolean('ce')->default(true);
-        });
         DB::table('registrations')->insert(
             array(
                 'registration_id' => '1',
