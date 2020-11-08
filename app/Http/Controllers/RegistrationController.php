@@ -54,15 +54,7 @@ class RegistrationController extends Controller
      */
     public function show($id)
     {
-        $studentData = DB::table('students')->where('student_id',$id)->get();
-        $courseData = DB::table('registrations')->where('student_id',$id)->get();
-        $courseOfStudent = [];
-        for($i=0;$i<sizeof($courseData);$i++){
-            $detail = DB::table('courses')->where('course_id',$courseData[$i]->course_id)->get();
-            array_push($courseOfStudent,$detail[0]); 
-        } 
-        // print_r($courseOfStudent);
-        return view('Student.showStudentData',compact(['studentData','courseOfStudent']));
+       
     }
 
     /**
@@ -96,6 +88,7 @@ class RegistrationController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::delete("DELETE from registrations where registration_id = ?",[$id]);
+        return redirect('/');
     }
 }
