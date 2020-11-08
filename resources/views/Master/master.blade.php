@@ -175,6 +175,7 @@
       </div>
    </div>
 
+   @auth
    <!-- Edit Profile form -->
    <div id="editprofile" class="modal fade" role="dialog">
       <div class="modal-dialog">
@@ -185,7 +186,7 @@
                   @csrf
                   <div class="row">
                      <div class="col-5">
-                        <input type="text" name="editname" class="username form-control" style="background: transparent" placeholder="Name" value="{{Auth::user()->name}}">
+                        <input type="text" name="editname" clasr="username form-control" style="background: transparent" placeholder="Name" value="{{Auth::user()->name}}">
                      </div>
                      <div class="col-7">
                         <input type="text" name="editlastname" class="username form-control" style="background: transparent" placeholder="Lastname" value="{{Auth::user()->lastname}}">
@@ -209,6 +210,7 @@
          </div>
       </div>
    </div>
+   @endauth
 
    <!-- Add course form -->
    <div id="addcourse" class="modal fade" role="dialog">
