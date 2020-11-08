@@ -19,13 +19,13 @@
                   <div class="col-3" style="margin-top:6%">
                      <h5>Name: {{$studentData[0]->name}}</h5>
                      <h5>Gender: {{$studentData[0]->gender}}</h5>
-                     <h5>Birth Date: {{$studentData[0]->birthdate}}</h5>
+                     <h5>Birth Date: {{$studentData[0]->birthdate}} </h5>
                      <h5>GPA:{{$studentData[0]->gpa}}</h5>
                   </div>
                   <div class="col-5" style="margin-top:6%">
                      <h5>Lastname: {{$studentData[0]->lastname}}</h5>
                      <h5>Phone: {{$studentData[0]->student_phone}}</h5>
-                     <h5>Age: xxx </h5>
+                     <h5>Age: {{Carbon\Carbon::now()->diffInYears($studentData[0]->birthdate)}}</h5>
                   </div>
                </div>
             </div>
@@ -63,13 +63,8 @@
                <td>{{$list->grade}}</td>
                <td>
                   <div class="row">
-                     {{Form::open(array('url' => '/','method'=>'get','style'=>'margin-right:4%'))}}
-                     {{Form::submit('Detail',['class'=>'btn btn-success'])}}
-                     {{Form::close()}}
-
-                     {{Form::open(array('url' => '/'))}}
-                     {{Form::submit('Drop',['class'=>'btn btn-danger'])}}
-                     {{Form::close()}}
+                     <a href="#"><button class='btn btn-success'>Detail</button></a>
+                     <a href="/registration/delete/{{$list->registration_id}}"><button class='btn btn-danger'>Drop</button></a>
                   </div>
                </td>
             </tr>
