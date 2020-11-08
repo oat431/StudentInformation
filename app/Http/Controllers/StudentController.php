@@ -115,7 +115,7 @@ class StudentController extends Controller
         $phone = $data['editphone'];
         $image = isset($data['image']) ? $data['image'] : "../asset/unknow.jpg";
         
-        DB::update("UPDATE users Set name=?,lastname=?,birthdate=?,student_phone=?,student_img=?",[$name,$lastname,$birthdate,$phone,$image]);
+        DB::update("UPDATE users Set name=?,lastname=?,birthdate=?,student_phone=?,student_img=? where id = ?",[$name,$lastname,$birthdate,$phone,$image,$id]);
         return redirect('/student/'.$id);
     }
 
