@@ -7,7 +7,15 @@ use Illuminate\Support\Facades\Auth;
 
 
 Route::get('/', function () {
-    return view('Student.student');
+    if(Auth::check()){
+        if(Auth::user()->role == 'student'){
+            return redirect("/student/".Auth::user()->id);
+        }
+        if(Auth::user()->role == 'admin'){
+            return redirect("/home");
+        }
+    }
+    return view("Master.master");
 });
 
 Auth::routes();
@@ -18,9 +26,9 @@ Route::get('/enroll', function () {
 
 /**resource part */
 Route::resource('admin', 'App\Http\Controllers\AdminCon')->middleware(CheckStatus::class);
-Route::resource('student','App\Http\Controllers\StudentController');
-Route::resource('course','App\Http\Controllers\CourseController');
-Route::resource('registration','App\Http\Controllers\RegistrationController');
+Route::resource('student', 'App\Http\Controllers\StudentController');
+Route::resource('course', 'App\Http\Controllers\CourseController');
+Route::resource('registration', 'App\Http\Controllers\RegistrationController');
 
 /**end */
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(CheckStatus::class);
@@ -30,12 +38,14 @@ Route::get('/grade', function () {
     $data = DB::table('users')->whereRaw('approve = 1 and id <> 1')->get();
     return view('admin.grade', compact(['data']));
 });
-Route::get('/updategrade','App\Http\Controllers\AdminCon@update');
+Route::get('/updategrade', 'App\Http\Controllers\AdminCon@update');
 
-Route::get('/student/{id}','App\Http\Controllers\StudentController@show');
-Route::get('/enroll/{id}','App\Http\Controllers\CourseController@show');
+Route::get('/student/{id}', 'App\Http\Controllers\StudentController@show');
+Route::get('/enroll/{id}', 'App\Http\Controllers\CourseController@show');
 
-Route::post('/registration',"App\Http\Controllers\RegistrationController@store");
-Route::post('/student','App\Http\Controllers\StudentController@store');
-Route::post('/login','App\Http\Controllers\Auth\LoginController@login');
-Route::get('/logout','App\Http\Controllers\Auth\LoginController@logout');
+Route::get('/registration/delete/{id}',"App\Http\Controllers\RegistrationController@destroy")->name('registration.destroy');
+Route::post('/registration', "App\Http\Controllers\RegistrationController@store");
+Route::post('/student', 'App\Http\Controllers\StudentController@store');
+Route::post('/student/update/{id}','App\Http\Controllers\StudentController@update');
+Route::post('/login', 'App\Http\Controllers\Auth\LoginController@login');
+Route::get('/logout', 'App\Http\Controllers\Auth\LoginController@logout');

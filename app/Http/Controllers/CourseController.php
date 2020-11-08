@@ -44,11 +44,27 @@ class CourseController extends Controller
      */
     public function show($id)
     {
-        $courseList = DB::table('registrations')->where('student_id','<>',$id)->get();
-        $courseData = [];
+        $courseList = DB::table('courses')->get();
+        $temp = [];
         for($i=0;$i<sizeof($courseList);$i++){
-            $data = DB::table('courses')->where('course_id',$courseList[$i]->course_id)->get();
-            array_push($courseData,$data[0]);
+            array_push($temp,$courseList[$i]->course_id);
+        }
+        $regis = DB::table('registrations')->where('student_id',$id)->get(); 
+        $courseData = [];
+        $index = 0;
+        for($i=0;$i<sizeof($regis);$i++){
+            for($j=0;$j<sizeof($temp);$j++){
+                if($regis[$i]->course_id == $temp[$j]){
+                    $temp[$j] = "xxxxxx";
+                    break;
+                }
+            } 
+        }
+        foreach($temp as $i){
+            if($i != "xxxxxx"){
+                $data = DB::table('courses')->where('course_id',$i)->get();
+                array_push($courseData,$data[0]);
+            }
         }
         return view('Student.Enroll',compact(['courseData','id']));
     }

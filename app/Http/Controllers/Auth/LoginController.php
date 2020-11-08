@@ -57,6 +57,12 @@ class LoginController extends Controller
             'password' => $request->get('password')
         ); 
         if(Auth::attempt($user_data)){
+
+            if(Auth::user()->approve==0){
+                Auth::logout();
+                $request->session()->flush();
+               return redirect('/login?status=wap');
+            }
             $user_role = Auth::user()->role;
             echo($user_role);
             if($user_role == 'admin'){
