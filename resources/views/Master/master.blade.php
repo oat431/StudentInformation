@@ -181,30 +181,30 @@
          <div class="modal-content">
             <div class="modal-body">
                <h4 style="color: white;">Edit Profile</h4>
-               {{ Form::open(array('url' => '/')) }}
-               <div class="row">
-                  <div class="col-5">
-                     {{Form::text('editname','',['class'=>'username form-control','style'=>'background: transparent;','placeholder'=>'Name'])}}
+               <form action="/student/update/{{Auth::user()->id}}" method="post">
+                  @csrf
+                  <div class="row">
+                     <div class="col-5">
+                        <input type="text" name="editname" class="username form-control" style="background: transparent" placeholder="Name" value="{{Auth::user()->name}}">
+                     </div>
+                     <div class="col-7">
+                        <input type="text" name="editlastname" class="username form-control" style="background: transparent" placeholder="Lastname" value="{{Auth::user()->lastname}}">
+                     </div>
+                     <div class="col-12">
+                        <input type="date" name="editbirthdate" class='datebirth' max='2005-01-01' min='1980-01-01' value={{Auth::user()->birthdate}}>
+                     </div>
+                     <div class="col-12">
+                        <input type="number" name="editphone" class="username form-control" style="background: transparent" placeholder="Phone" value={{Auth::user()->student_phone}}>
+                     </div>
+                     <div class="col-12">
+                        <label for="Profile picture" style="color:white">Profile picture</label>
+                        <input type="file" name="image" class="file" accept="image/*">
+                     </div>
+                     <div class="col-12">
+                        <input type="submit" class='btn login' value="Change">
+                     </div>
                   </div>
-                  <div class="col-7">
-                     {{Form::text('editlastname','',['class'=>'username form-control','style'=>'background: transparent;','placeholder'=>'Lastname'])}}
-                  </div>
-                  <div class="col-12">
-                     {{Form::select('Gender', ['Male' => 'Male', 'Female' => 'Female'])}}
-                     {{Form::date('editbirthdate', \Carbon\Carbon::now(),['class'=>'datebirth'])}}
-                  </div>
-                  <div class="col-12">
-                     {{Form::number('editphone','',['class'=>'username form-control','style'=>'background: transparent;','placeholder'=>'Phone'])}}
-                  </div>
-                  <div class="col-12">
-                     {{Form::label('Profile picture','',['style'=>'color:white'])}}
-                     {{Form::file('image',['class'=>'file','accept'=>'image/*'])}}
-                  </div>
-                  <div class="col-12">
-                     {{Form::submit('Change',['class'=>'btn login'])}}
-                  </div>
-               </div>
-               {{ Form::close() }}
+               </form>
             </div>
          </div>
       </div>
