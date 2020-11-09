@@ -120,7 +120,12 @@
                <th scope="row">{{$item->id}}</th>
                <td>{{$item->name}}</td>
                <td>{{$item->email}}</td>
-               <td><a href="{{ route('admin.show',$item->id) }}">grade</a></td>
+               <td>
+                  <div class="row">
+                     <a href="{{ route('admin.show',$item->id) }}"><button class="btn btn-primary">grade</button></a>
+                     <a href="/admin/calGrade/{{$item->id}}"><button class="btn btn-success">Cal GPA</button></a>
+                  </div>
+               </td>
             </tr>
             @endforeach
          </tbody>
