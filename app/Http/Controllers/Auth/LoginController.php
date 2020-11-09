@@ -66,7 +66,7 @@ class LoginController extends Controller
             $user_role = Auth::user()->role;
             echo($user_role);
             if($user_role == 'admin'){
-                return redirect('/home');
+                return redirect('/');
             } 
             if($user_role == 'student'){
                 $user_id = Auth::user()->id; 
@@ -80,6 +80,8 @@ class LoginController extends Controller
 
     public function logout(){
         Auth::logout();
+        session_start();
+        session_destroy();
         return redirect("/");
     }
 }
