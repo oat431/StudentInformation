@@ -14,34 +14,37 @@
       <table class="table table-hover">
          <thead>
             <tr>
-               <th scope="col">Student ID</th>
-               <th scope="col">Name</th>
-               <th scope="col">Username</th>
-               <th scope="col">Gender</th>
-               <th scope="col">Age</th>
-               <th scope="col">Approve</th>
+               <th scope="col">#</th>
+               <th scope="col">name</th>
+               <th scope="col">email</th>
+               {{-- <th scope="col">phone</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Age</th> --}}
+               <th scope="col">Action</th>
             </tr>
          </thead>
-
          <tbody>
+            @foreach ($data as $item)
             <tr>
-               <th scope="row">xxxxxx</th>
-               <td>xxxxxxxxxxxx</td>
-               <td>xxxxxxxxx</td>
-               <td>xxxxxxxxx</td>
-               <td>xxxxxxxx</td>
+               <th scope="row">{{$item->id}}</th>
+               <td>{{$item->name}}</td>
+               <td>{{$item->email}}</td>
+               {{-- <td>{{$item->phone}}</td>
+               <td>{{$item->gender}}</td>
+               <td>{{$item->age}}</td> --}}
                <td>
-                  <div class="row">
-                     {{Form::open(array('url' => '/','method'=>'get','style'=>'margin-right:2%'))}}
-                     {{Form::submit('Yes',['class'=>'btn btn-success'])}}
-                     {{Form::close()}}
-
-                     {{Form::open(array('url' => '/','method'=>'get'))}}
-                     {{Form::submit('No',['class'=>'btn btn-danger'])}}
-                     {{Form::close()}}
+                  <div class='row'>
+                     <a href="{{ route('admin.edit',$item->id) }}">
+                        <button class="btn btn-primary">approve</button>
+                     </a>
+                     <a href="{{ route('admin.destroy',['id'=>$item->id])}}">
+                        <button class="btn btn-danger">reject</button>
+                     </a>
                   </div>
                </td>
             </tr>
+            @endforeach
+            {{-- {{ route('admin.destroy',['id'=>$item->id])}} --}}
          </tbody>
       </table>
    </div>
@@ -70,20 +73,24 @@
          </thead>
 
          <tbody>
+            @foreach($Course as $item)
             <tr>
-               <th scope="row">xxxxxx</th>
-               <td>xxxxxxxxxxxx</td>
-               <td>xxxxxxxxx</td>
+               <th scope="row">{{$item->course_id}}</th>
+               <td>{{$item->course_name}}</td>
+               <td>{{$item->credit}}</td>
                <td>
                   <div class="row">
-                     {{Form::submit('Edit',['class'=>'btn btn-primary','style'=>'margin-right:2%','data-target'=>'#editcourse', 'data-toggle'=>'modal'])}}
-
-                     {{Form::open(array('url' => '/'))}}
-                     {{Form::submit('Delete',['class'=>'btn btn-danger','onclick'=>'return confirm("Delete or not?");'])}}
-                     {{Form::close()}}
+                     <form action="#edit" method="post">
+                        <input type="hidden" name="course_id" value="{{$item->course_id}}" />
+                        <input type="button" value="Edit" class="btn btn-primary" style="margin-right:2%" data-target="#editcourse" data-toggle="modal">
+                     </form>
+                     <form action="/course/delete/{{$item->course_id}}" method="get">
+                        <input type="submit" value="Delete" class="btn btn-danger" onclick="return confirm('You sure to delete this course');" />
+                     </form>
                   </div>
                </td>
             </tr>
+            @endforeach
          </tbody>
       </table>
    </div>
@@ -95,33 +102,27 @@
       <div class="row" style="margin-top: 5%;">
          <div class="col">
             <h1>Grade</h1>
+            <p>{{$log}}</p>
          </div>
       </div>
       <table class="table table-hover">
          <thead>
             <tr>
-               <th scope="col">Student ID</th>
-               <th scope="col">Name</th>
-               <th scope="col">Grade</th>
-               <th scope="col">Operation</th>
+               <th scope="col">#</th>
+               <th scope="col">name</th>
+               <th scope="col">email</th>
+               <th scope="col">Action</th>
             </tr>
          </thead>
-
          <tbody>
+            @foreach ($dataGrade as $item)
             <tr>
-               <th scope="row">xxxxxx</th>
-               <td>xxxxxxxxxxxx</td>
-               <td>xxxxxxxxx</td>
-               <td>
-                  <div class="row">
-                     {{Form::submit('Edit',['class'=>'btn btn-primary','style'=>'margin-right:2%','data-target'=>'#editgrade', 'data-toggle'=>'modal'])}}
-
-                     {{Form::open(array('url' => '/'))}}
-                     {{Form::submit('Delete',['class'=>'btn btn-danger','onclick'=>'return confirm("Delete or not?");'])}}
-                     {{Form::close()}}
-                  </div>
-               </td>
+               <th scope="row">{{$item->id}}</th>
+               <td>{{$item->name}}</td>
+               <td>{{$item->email}}</td>
+               <td><a href="{{ route('admin.show',$item->id) }}">grade</a></td>
             </tr>
+            @endforeach
          </tbody>
       </table>
    </div>
@@ -147,24 +148,25 @@
                <th scope="col">Operation</th>
             </tr>
          </thead>
-
          <tbody>
+            @foreach($apStudent as $item)
             <tr>
-               <th scope="row">xxxxxx</th>
-               <td>xxxxxx</td>
-               <td>xxxxxxxxxxxx</td>
-               <td>xxxxxxx</td>
-               <td>xxxxxxx</td>
-               <td>xxxxxxxxxxxx</td>
-               <td>xxxxxxxxx</td>
+               <th scope="row">{{$item->id}}</th>
+               <td>{{$item->name}}</td>
+               <td>{{$item->lastname}}</td>
+               <td>{{$item->email}}</td>
+               <td>{{$item->student_phone}}</td>
+               <td>{{$item->gender}}</td>
+               <td>{{$item->gpa}}</td>
                <td>
                   <div class="row">
-                     {{Form::open(array('url' => '/'))}}
-                     {{Form::submit('Delete',['class'=>'btn btn-danger','onclick'=>'return confirm("Delete or not?");'])}}
-                     {{Form::close()}}
+                     <form action="/student/delete/{{$item->id}}" method="get">
+                        <input type="submit" value="Delete" class="btn btn-danger" onclick='return confirm("Delete or not?");'>
+                     </form>
                   </div>
                </td>
             </tr>
+            @endforeach
          </tbody>
       </table>
    </div>

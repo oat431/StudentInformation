@@ -23,9 +23,6 @@
             <th scope="col">#</th>
             <th scope="col">name</th>
             <th scope="col">email</th>
-            {{-- <th scope="col">phone</th>
-            <th scope="col">Gender</th>
-            <th scope="col">Age</th> --}}
             <th scope="col">Action</th>
           </tr>
         </thead>
@@ -35,9 +32,6 @@
             <th scope="row">{{$item->id}}</th>
             <td>{{$item->name}}</td>
             <td>{{$item->email}}</td>
-            {{-- <td>{{$item->phone}}</td>
-            <td>{{$item->gender}}</td>
-            <td>{{$item->age}}</td> --}}
             <td><a href="{{ route('admin.show',$item->id) }}">grade</a></td>
           </tr>
             @endforeach
