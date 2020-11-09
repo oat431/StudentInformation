@@ -41,6 +41,7 @@ Route::get('/grade', function () {
 });
 
 Route::get('/updategrade', 'App\Http\Controllers\AdminCon@update');
+Route::get('/admin/calGrade/{id}','App\Http\Controllers\RegistrationController@edit');
 
 Route::get('/student/{id}', 'App\Http\Controllers\StudentController@show');
 Route::get('/enroll/{id}', 'App\Http\Controllers\CourseController@show');
