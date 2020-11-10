@@ -127,6 +127,7 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::delete("DELETE from users where id=?",[$id]);
+        return redirect('/');
     }
 }

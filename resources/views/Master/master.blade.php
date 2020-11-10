@@ -156,7 +156,7 @@
                   </div>
                   <div class="col-12">
                      {{Form::select('Gender', ['Male' => 'Male', 'Female' => 'Female'])}}
-                     {{Form::date('regbirthdate', \Carbon\Carbon::now(),['class'=>'datebirth'])}}
+                     {{Form::date('regbirthdate','', ['class'=>'datebirth','min'=>'1980-01-01','max'=>'2005-12-31'])}}
                   </div>
                   <div class="col-12">
                      {{Form::number('regphone','',['class'=>'username form-control','style'=>'background: transparent;','placeholder'=>'Phone'])}}
@@ -218,12 +218,15 @@
          <div class="modal-content">
             <div class="modal-body">
                <h4 style="color: white;">Add course</h4>
-               {{ Form::open(array('url' => '/')) }}
+               {{ Form::open(array('url' => '/course','method'=>'post')) }}
                <div class="row">
-                  <div class="col-5">
+                  <div class="col-4">
+                     {{Form::text('courseid','',['class'=>'username form-control','style'=>'background: transparent;','placeholder'=>'Course id'])}}
+                  </div>
+                  <div class="col-4">
                      {{Form::text('coursename','',['class'=>'username form-control','style'=>'background: transparent;','placeholder'=>'Course Name'])}}
                   </div>
-                  <div class="col-7">
+                  <div class="col-4">
                      {{Form::text('coursecredit','',['class'=>'username form-control','style'=>'background: transparent;','placeholder'=>'Credit'])}}
                   </div>
                   <div class="col-12">
@@ -242,13 +245,16 @@
          <div class="modal-content">
             <div class="modal-body">
                <h4 style="color: white;">Edit course</h4>
-               {{ Form::open(array('url' => '/')) }}
+               {{ Form::open(array('url' => '/course/update/1597')) }}
                <div class="row">
-                  <div class="col-5">
-                     {{Form::text('editcoursename','',['class'=>'username form-control','style'=>'background: transparent;','placeholder'=>'Course Name'])}}
+                  <div class="col-4">
+                     {{Form::text('find','',['class'=>'username form-control','style'=>'background: transparent;','placeholder'=>'Which course id'])}}
                   </div>
-                  <div class="col-7">
-                     {{Form::text('editcoursecredit','',['class'=>'username form-control','style'=>'background: transparent;','placeholder'=>'Credit'])}}
+                  <div class="col-4">
+                     {{Form::text('editcoursename','',['class'=>'username form-control','style'=>'background: transparent;','placeholder'=>'Change Name to'])}}
+                  </div>
+                  <div class="col-4">
+                     {{Form::text('editcoursecredit','',['class'=>'username form-control','style'=>'background: transparent;','placeholder'=>'Change credit to'])}}
                   </div>
                   <div class="col-12">
                      {{Form::submit('Change',['class'=>'btn login'])}}

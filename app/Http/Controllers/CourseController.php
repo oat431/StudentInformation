@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\Course;
 class CourseController extends Controller
 {
     /**
@@ -33,7 +34,17 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'courseid' => 'required',
+            'coursename' => 'required',
+            'coursecredit' => 'required'
+        ]);
+        $course = new Course;
+        $course->course_id = $data['courseid'];
+        $course->course_name = $data['coursename'];
+        $course->credit = $data['coursecredit'];
+        $course->save();
+        return redirect('/admin');
     }
 
     /**
@@ -89,7 +100,17 @@ class CourseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->validate([
+            'find' => 'required',
+            'editcoursename' => 'required',
+            'editcoursecredit' => 'required'
+        ]);
+        $course_id = $data['find'];
+        $course_name = $data['editcoursename'];
+        $credit = $data['editcoursecredit'];
+
+        DB::update('UPDATE courses SET course_name=?,credit=? where course_id=?',[$course_name,$credit,$course_id]);
+        return redirect('/admin');
     }
 
     /**
@@ -100,6 +121,7 @@ class CourseController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::delete("DELETE from courses where course_id=?",[$id]);
+        return redirect('/admin');
     }
 }
