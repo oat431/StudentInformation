@@ -2,8 +2,24 @@
 
 @section('title','Admin Page')
 
-@section('section')
+@section('nav')
+<div class="collapse navbar-collapse " id="navbar-list-4">
+   <ul class="navbar-nav ml-auto mr-1">
+      <h6 style="margin:auto auto">Admin</h6>
+      <li class="nav-item dropdown ">
+         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="50" height="50" class="rounded-circle">
+         </a>
+         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" data-target="#editprofile" data-toggle="modal">Edit Profile</a>
+            <a class="dropdown-item" href="/logout">Log Out</a>
+         </div>
+      </li>
+   </ul>
+</div>
+@endsection
 
+@section('section')
 <div class="section BG3" id="section">
    <div class="container">
       <div class="row" style="margin-top: 5%;">
@@ -34,7 +50,7 @@
                <td>{{$item->age}}</td> --}}
                <td>
                   <div class='row'>
-                     <a href="{{ route('admin.edit',$item->id) }}">
+                     <a href="{{ route('admin.edit',$item->id) }}" style="margin-right: 3%;">
                         <button class="btn btn-primary">approve</button>
                      </a>
                      <a href="{{ route('admin.destroy',['id'=>$item->id])}}">
@@ -80,9 +96,9 @@
                <td>{{$item->credit}}</td>
                <td>
                   <div class="row">
-                     <form action="#edit" method="post">
+                     <form action="#edit" method="post" style="margin-right: 3%;">
                         <input type="hidden" name="course_id" value="{{$item->course_id}}" />
-                        <input type="button" value="Edit" class="btn btn-primary" style="margin-right:2%" data-target="#editcourse" data-toggle="modal">
+                        <input type="button" value="Edit" class="btn btn-primary" data-target="#editcourse" data-toggle="modal">
                      </form>
                      <form action="/course/delete/{{$item->course_id}}" method="get">
                         <input type="submit" value="Delete" class="btn btn-danger" onclick="return confirm('You sure to delete this course');" />

@@ -37,20 +37,8 @@
       </button>
 
       @auth
-      <div class="collapse navbar-collapse " id="navbar-list-4">
-         <ul class="navbar-nav ml-auto mr-1">
-            <h6 style="margin:auto auto">Username</h6>
-            <li class="nav-item dropdown ">
-               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="50" height="50" class="rounded-circle">
-               </a>
-               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" data-target="#editprofile" data-toggle="modal">Edit Profile</a>
-                  <a class="dropdown-item" href="/logout">Log Out</a>
-               </div>
-            </li>
-         </ul>
-      </div>
+      <!-- Yield Navbar -->
+      @yield('nav')
       @endauth
 
       @guest
@@ -65,37 +53,11 @@
    </nav>
 
    <div id="fullpage">
-
-      <!-- <div class="section" id="section1">
-         <div class="slide BG1">
-            <div class="container">
-               <h1>Simple Demo</h1>
-            </div>
-         </div>
-         <div class="slide active">
-            <div class="container">
-               <h1>Only text</h1>
-            </div>
-         </div>
-         <div class="slide">
-            <div class="container">
-               <h1>And text</h1>
-            </div>
-         </div>
-         <div class="slide">
-            <div class="container">
-               <h1>And more text</h1>
-            </div>
-         </div>
-      </div> -->
-
       @guest
       <div class="section BG1" id="section2">
          <div class="container">
-
             <h1 style="color:darkmagenta;">Welcome to KueMunLue Wittayakom Website</h1>
             <h2 style="color:darkmagenta;">Please Login to access the website :)</h2>
-
          </div>
       </div>
       @endguest
@@ -186,7 +148,7 @@
                   @csrf
                   <div class="row">
                      <div class="col-5">
-                        <input type="text" name="editname" clasr="username form-control" style="background: transparent" placeholder="Name" value="{{Auth::user()->name}}">
+                        <input type="text" name="editname" class="username form-control" style="background: transparent" placeholder="Name" value="{{Auth::user()->name}}">
                      </div>
                      <div class="col-7">
                         <input type="text" name="editlastname" class="username form-control" style="background: transparent" placeholder="Lastname" value="{{Auth::user()->lastname}}">
