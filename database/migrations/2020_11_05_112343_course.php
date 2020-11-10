@@ -19,34 +19,7 @@ class Course extends Migration
             $table->string('course_name');
             $table->float('credit');
         });
-        DB::table('courses')->insert(
-            array(
-                'course_id' => '953233',
-                'course_name' => 'programming methodology',
-                'credit' => '3',
-            ),
-        );
-        DB::table('courses')->insert(
-            array(
-                'course_id' => '953261',
-                'course_name' => 'interactive website',
-                'credit' => '2',
-            ),
-        );
-        DB::table('courses')->insert(
-            array(
-                'course_id' => '953361',
-                'course_name' => 'computer network and protocols',
-                'credit' => '3',
-            ),
-        );
-        DB::table('courses')->insert(
-            array(
-                'course_id' => '953212',
-                'course_name' => 'database system and design',
-                'credit' => '3',
-            )
-        );
+        
     }
 
     /**

@@ -31,33 +31,7 @@ class Student extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
-        DB::table('users')->insert(
-            array(
-                'id' => 1,
-                'approve' => true,
-                'role' => 'admin',
-                'email' => 'admin@admin',
-                'password' => Hash::make('admin'),
-                'name' => 'principle',
-                'lastname' => 'admin',
-                'gender' => 'male',
-                'student_phone' => '0830830830',
-                'birthdate' => '1980-11-11',
-            )
-        );
-        DB::table('users')->insert(
-            array(
-                'id' => 2,
-                'approve' => false,
-                'email' => 'student@student',
-                'password' => Hash::make('student'),
-                'name' => 'littleguy',
-                'lastname' => 'studentuy',
-                'gender' => 'male',
-                'student_phone' => '0830830830',
-                'birthdate' => '2000-11-11',
-            )
-        );
+        
     }
 
     /**
