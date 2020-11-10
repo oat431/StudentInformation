@@ -8,7 +8,7 @@
       <h6 style="margin:auto auto">{{$studentData[0]->name}}</h6>
       <li class="nav-item dropdown ">
          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="50" height="50" class="rounded-circle">
+            <img src="{{ URL::to('/') }}{{ $studentData[0]->student_img }}" width="50" height="50" class="rounded-circle">
          </a>
          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
             <a class="dropdown-item" data-target="#editprofile" data-toggle="modal">Edit Profile</a>
@@ -34,9 +34,9 @@
                   <div class="col-4">
                      @if($studentData[0]->student_img == '../assets/unknown.png')
                      <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" style="margin-right:5%;width:280px;height:280px">
-                     @else 
+                     @else
                      <img src="{{ URL::to('/') }}{{ $studentData[0]->student_img }}" style="margin-right:5%;width:280px;height:280px">
-                     @endif 
+                     @endif
                   </div>
                   <div class="col-3" style="margin-top:6%">
                      <h5>Name: {{$studentData[0]->name}}</h5>
