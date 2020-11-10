@@ -49,6 +49,8 @@ class StudentController extends Controller
             'Gender' => 'required',
             'image' => 'nullable'
         ]);
+
+
         $student = new User;
         $student->name = $data['regname'];
         $student->lastname = $data['reglastname'];
@@ -57,9 +59,13 @@ class StudentController extends Controller
         $student->birthdate = $data['regbirthdate'];
         $student->student_phone = $data['regphone'];
         $student->gender = $data['Gender'];
-        $student->student_img = isset($data['image']) ? '/pic/'.$data['image'] : '../assets/unknown.png';
+
+        /*   $imgName = $data['image']->getClientOriginalName();
+        $student->student_img = $request->file('image')->storeAs('pic', $imgName, ['disk' => 'uploads']); */
+
+        $student->student_img = isset($data['image']) ? '/pic/' . $data['image'] : '../assets/unknown.png';
         $student->save();
-        Storage::disk('public_uploads')->put('/pic/'.$data['image'],'');
+        //Storage::disk('public_uploads')->put($data['image'], '');
         return redirect('/home');
     }
 
@@ -115,11 +121,11 @@ class StudentController extends Controller
         $lastname = $data['editlastname'];
         $birthdate = $data['editbirthdate'];
         $phone = $data['editphone'];
-        $image = isset($data['image']) ? '/pic/'.$data['image'] : "../asset/unknow.jpg";
-        
-        DB::update("UPDATE users Set name=?,lastname=?,birthdate=?,student_phone=?,student_img=? where id = ?",[$name,$lastname,$birthdate,$phone,$image,$id]);
-        Storage::disk('public_uploads')->put('/pic/'.$data['image'],'');
-        return redirect('/student/'.$id);
+        $image = isset($data['image']) ? '/pic/' . $data['image'] : "../asset/unknow.jpg";
+
+        DB::update("UPDATE users Set name=?,lastname=?,birthdate=?,student_phone=?,student_img=? where id = ?", [$name, $lastname, $birthdate, $phone, $image, $id]);
+        //Storage::disk('public_uploads')->put($data['image'], 'Contents');
+        return redirect('/student/' . $id);
     }
 
     /**
@@ -130,7 +136,7 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        DB::delete("DELETE from users where id=?",[$id]);
+        DB::delete("DELETE from users where id=?", [$id]);
         return redirect('/');
     }
 }
