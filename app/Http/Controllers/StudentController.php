@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use Illuminate\Support\Facades\Storage;
 
 class StudentController extends Controller
 {
@@ -56,8 +57,9 @@ class StudentController extends Controller
         $student->birthdate = $data['regbirthdate'];
         $student->student_phone = $data['regphone'];
         $student->gender = $data['Gender'];
-        $student->student_img = isset($data['image']) ? $data['image'] : '../assets/unknown.png';
+        $student->student_img = isset($data['image']) ? '/pic/'.$data['image'] : '../assets/unknown.png';
         $student->save();
+        Storage::disk('public_uploads')->put('/pic/'.$data['image'],'');
         return redirect('/home');
     }
 
@@ -113,9 +115,10 @@ class StudentController extends Controller
         $lastname = $data['editlastname'];
         $birthdate = $data['editbirthdate'];
         $phone = $data['editphone'];
-        $image = isset($data['image']) ? $data['image'] : "../asset/unknow.jpg";
+        $image = isset($data['image']) ? '/pic/'.$data['image'] : "../asset/unknow.jpg";
         
         DB::update("UPDATE users Set name=?,lastname=?,birthdate=?,student_phone=?,student_img=? where id = ?",[$name,$lastname,$birthdate,$phone,$image,$id]);
+        Storage::disk('public_uploads')->put('/pic/'.$data['image'],'');
         return redirect('/student/'.$id);
     }
 

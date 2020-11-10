@@ -32,7 +32,11 @@
             <div class="card-text" style="padding: 3%;">
                <div class="row" style="margin-left: 3%;">
                   <div class="col-4">
+                     @if($studentData[0]->student_img == '../assets/unknown.png')
                      <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" style="margin-right:5%;width:280px;height:280px">
+                     @else 
+                     <img src="{{ URL::to('/') }}{{ $studentData[0]->student_img }}" style="margin-right:5%;width:280px;height:280px">
+                     @endif 
                   </div>
                   <div class="col-3" style="margin-top:6%">
                      <h5>Name: {{$studentData[0]->name}}</h5>
